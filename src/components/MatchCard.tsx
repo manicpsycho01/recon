@@ -3,11 +3,11 @@ import type { BankTxn, Match } from "@/lib/match";
 import { day, money } from "@/lib/format";
 import { Icon } from "./Icon";
 
-const TONE = { good: "bg-thread-soft text-thread", info: "bg-info-soft text-info", warn: "bg-review-soft text-review" } as const;
+const TONE = { good: "text-thread", info: "text-info", warn: "text-review" } as const;
 
 export function BankSide({ b }: { b: BankTxn }) {
   return (
-    <div className="min-w-0 rounded-xl border border-line bg-paper p-3.5">
+    <div className="min-w-0 rounded-[3px] border border-line bg-paper p-3.5">
       <p className="label truncate text-muted">{day(b.date)} · {b.amount > 0 ? "Money in" : "Money out"}</p>
       <p className="mt-1 truncate font-semibold">{b.party}</p>
       <p className="truncate text-[13px] text-muted" title={b.description}>{b.description}</p>
@@ -18,7 +18,7 @@ export function BankSide({ b }: { b: BankTxn }) {
 
 export function InvoiceSide({ inv }: { inv: Invoice }) {
   return (
-    <div className="min-w-0 rounded-xl border border-line bg-paper p-3.5">
+    <div className="min-w-0 rounded-[3px] border border-line bg-paper p-3.5">
       <p className="label truncate text-muted">{inv.kind === "invoice" ? "Invoice" : "Bill"} {inv.number}</p>
       <p className="mt-1 truncate font-semibold">{inv.party}</p>
       <p className="truncate text-[13px] text-muted">Raised {day(inv.date)}{inv.due ? ` · due ${day(inv.due)}` : ""}</p>
@@ -44,11 +44,11 @@ export function MatchCard({ m, bank, invoices, active, onConfirm, onReject, onFo
       onClick={onFocus}
       aria-label={`${kindLabel}, score ${m.score}`}
       data-match={m.key}
-      className={`rounded-2xl border bg-sheet p-4 transition-[border-color,box-shadow] duration-200 sm:p-5 ${active ? "border-ink/40 shadow-[0_0_0_3px_var(--color-line)]" : "border-line"}`}
+      className={`rounded-[3px] border bg-sheet p-4 transition-[border-color,box-shadow] duration-200 sm:p-5 ${active ? "border-ink/40 outline outline-1 outline-ink" : "border-line"}`}
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="label text-muted">{kindLabel}</p>
-        <span className={`label rounded-full px-2.5 py-1 ${m.status === "review" ? "bg-review-soft text-review" : "bg-thread-soft text-thread"}`}>
+        <span className={`stamp -rotate-1 ${m.status === "review" ? "text-review" : "text-thread"}`}>
           {m.status === "review" ? `Needs review · ${m.score}` : m.status === "auto" ? `Matched · ${m.score}` : "Confirmed"}
         </span>
       </div>
@@ -63,17 +63,17 @@ export function MatchCard({ m, bank, invoices, active, onConfirm, onReject, onFo
         <div className="flex min-w-0 flex-col gap-2">{m.invoices.map((i) => <InvoiceSide key={i} inv={invoices[i]!} />)}</div>
       </div>
 
-      <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Why">
-        {m.reasons.map((r) => <li key={r.label} className={`rounded-md px-2 py-1 text-[13px] ${TONE[r.tone]}`}>{r.label}</li>)}
+      <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2" aria-label="Why">
+        {m.reasons.map((r) => <li key={r.label} className={`border-l-2 border-current pl-2 text-[13.5px] leading-tight ${TONE[r.tone]}`}><span className="text-ink-2">{r.label}</span></li>)}
       </ul>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         {onConfirm && (
-          <button type="button" onClick={onConfirm} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-ink px-4 text-[15px] font-semibold text-paper hover:opacity-90">
+          <button type="button" onClick={onConfirm} className="inline-flex min-h-11 items-center gap-2 rounded-[3px] bg-ink px-4 text-[15px] font-semibold text-paper hover:opacity-90">
             <Icon name="check" className="size-4" strokeWidth={2.4} /> Confirm
           </button>
         )}
-        <button type="button" onClick={onReject} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line px-4 text-[15px] font-medium hover:border-ink/40">
+        <button type="button" onClick={onReject} className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line px-4 text-[15px] font-medium hover:border-ink/40">
           {m.status === "review" ? <><Icon name="x" className="size-4" /> Not a match</> : <><Icon name="undo" className="size-4" /> Unmatch</>}
         </button>
         {Math.abs(m.diff) >= 0.5 && (

@@ -14,7 +14,7 @@ const sample = async (page: Page) => {
   await expect(page.getByRole("tablist")).toBeVisible({ timeout: 15_000 });
 };
 const tab = (page: Page, name: RegExp) => page.getByRole("tab", { name });
-const toast = (page: Page) => page.locator("[aria-live=polite] p.rounded-full");
+const toast = (page: Page) => page.locator("[data-toast]");
 
 test("landing: clear promise, two inputs, Match disabled until both are loaded", async ({ page }) => {
   const errors = watch(page);

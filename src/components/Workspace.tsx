@@ -108,13 +108,13 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
             <p className="truncate text-[15px]"><span className="font-medium">{names.invoices}</span> <span className="text-muted">({invoices.length} open items)</span></p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={onReset} aria-label="New reconciliation" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-[15px] font-medium whitespace-nowrap text-paper hover:opacity-90">
+            <button type="button" onClick={onReset} aria-label="New reconciliation" className="inline-flex min-h-11 items-center gap-2 rounded-[3px] bg-ink px-4 text-[15px] font-medium whitespace-nowrap text-paper hover:opacity-90">
               <Icon name="upload" className="size-4" /> New<span className="hidden sm:inline"> files</span>
             </button>
-            <button type="button" onClick={exportStatement} aria-label="Download reconciled statement" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-sheet px-4 text-[15px] whitespace-nowrap hover:border-ink/40">
+            <button type="button" onClick={exportStatement} aria-label="Download reconciled statement" className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line bg-sheet px-4 text-[15px] whitespace-nowrap hover:border-ink/40">
               <Icon name="download" className="size-4" /> Statement<span className="hidden sm:inline"> CSV</span>
             </button>
-            <button type="button" onClick={exportOpen} aria-label="Download open invoices" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-sheet px-4 text-[15px] whitespace-nowrap hover:border-ink/40">
+            <button type="button" onClick={exportOpen} aria-label="Download open invoices" className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line bg-sheet px-4 text-[15px] whitespace-nowrap hover:border-ink/40">
               <Icon name="download" className="size-4" /> Unpaid<span className="hidden sm:inline"> CSV</span>
             </button>
           </div>
@@ -122,14 +122,14 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
 
         <div data-in className="mt-8 md:mt-10">
           <h1 className="display text-[clamp(2.2rem,5.5vw,3.75rem)] text-balance">
-            {inr(inMatched)} of {inr(inTotal)} received is <span className="text-thread">matched</span>.
+            {inr(inMatched)} of {inr(inTotal)} received is <em className="text-thread">matched</em>.
           </h1>
-          <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-line-2" role="img" aria-label={`${Math.round((inMatched / Math.max(inTotal, 1)) * 100)}% of money received is matched`}>
-            <div className="h-full rounded-full bg-thread transition-[width] duration-700 ease-out-expo" style={{ width: `${(inMatched / Math.max(inTotal, 1)) * 100}%` }} />
+          <div className="mt-5 h-2.5 overflow-hidden rounded-[3px] bg-line-2" role="img" aria-label={`${Math.round((inMatched / Math.max(inTotal, 1)) * 100)}% of money received is matched`}>
+            <div className="h-full rounded-[3px] bg-thread transition-[width] duration-700 ease-out-expo" style={{ width: `${(inMatched / Math.max(inTotal, 1)) * 100}%` }} />
           </div>
         </div>
 
-        <dl data-in className="mt-8 grid grid-cols-2 overflow-hidden rounded-2xl border border-line bg-sheet lg:grid-cols-4">
+        <dl data-in className="mt-8 grid grid-cols-2 overflow-hidden rounded-[3px] border border-line bg-sheet lg:grid-cols-4">
           {[
             ["Matched", String(matched.length), `${matched.filter((m) => m.status === "auto").length} automatically`, "text-thread"],
             ["Needs review", String(review.length), review.length ? "your call on each" : "nothing waiting", review.length ? "text-review" : ""],
@@ -156,8 +156,8 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
               onClick={() => setTab(t.id)}
               className={`relative min-h-12 shrink-0 px-3 text-[15px] whitespace-nowrap transition-colors ${tab === t.id ? "font-semibold text-ink" : "text-muted hover:text-ink"}`}
             >
-              {t.label} <span className={`num ml-1 rounded-full px-2 py-0.5 text-[12px] ${tab === t.id ? "bg-ink text-paper" : "bg-line-2"}`}>{t.count}</span>
-              {tab === t.id && <span className="absolute inset-x-2 bottom-0 h-0.5 rounded-full bg-ink" />}
+              {t.label} <span className={`num ml-1 rounded-[3px] px-2 py-0.5 text-[12px] ${tab === t.id ? "bg-ink text-paper" : "bg-line-2"}`}>{t.count}</span>
+              {tab === t.id && <span className="absolute inset-x-2 bottom-0 h-0.5 rounded-[3px] bg-ink" />}
             </button>
           ))}
         </div>
@@ -176,7 +176,7 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
         </div>
 
         {(decisions.aliases.size > 0 || decisions.confirmed.size > 0 || decisions.rejected.size > 0) && (
-          <div className="mt-12 rounded-2xl border border-line bg-sheet p-5">
+          <div className="mt-12 rounded-[3px] border border-line bg-sheet p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-semibold">What Recon learned from you</h2>
               <button type="button" onClick={clearAll} className="min-h-11 text-[14px] text-muted underline underline-offset-4 hover:text-ink">Clear my decisions</button>
@@ -185,9 +185,9 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
             {decisions.aliases.size > 0 && (
               <ul className="mt-3 flex flex-wrap gap-2">
                 {[...decisions.aliases].map(([from, to]) => (
-                  <li key={from} className="inline-flex items-center gap-1 rounded-full bg-thread-soft py-1 pr-1 pl-3 text-[13px] text-thread">
+                  <li key={from} className="inline-flex items-center gap-1 rounded-[3px] border border-thread/40 py-0.5 pr-0.5 pl-3 text-[13px] text-thread">
                     “{from}” pays for “{to}”
-                    <button type="button" onClick={() => forget(from)} aria-label={`Forget ${from}`} className="grid size-8 place-items-center rounded-full hover:bg-sheet/60"><Icon name="x" className="size-3.5" /></button>
+                    <button type="button" onClick={() => forget(from)} aria-label={`Forget ${from}`} className="grid size-8 place-items-center rounded-[3px] hover:bg-sheet/60"><Icon name="x" className="size-3.5" /></button>
                   </li>
                 ))}
               </ul>
@@ -208,7 +208,7 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
       })()}
 
       <div aria-live="polite" className="pointer-events-none fixed inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex justify-center px-4">
-        {toast && <p className="pointer-events-auto rounded-full bg-ink px-5 py-3 text-[14px] text-paper shadow-xl">{toast}</p>}
+        {toast && <p data-toast className="pointer-events-auto rounded-[3px] bg-ink px-5 py-3 text-[14px] text-paper">{toast}</p>}
       </div>
       <Footer />
     </div>
@@ -217,7 +217,7 @@ export function Workspace({ bank, invoices, names, decisions, update, onReset }:
 
 function Empty({ text, sub }: { text: string; sub?: string }) {
   return (
-    <div className="ledger rounded-2xl border border-dashed border-line px-6 py-14 text-center">
+    <div className="ledger rounded-[3px] border border-dashed border-line px-6 py-14 text-center">
       <p className="font-semibold">{text}</p>
       {sub && <p className="mt-1 text-[15px] text-muted">{sub}</p>}
     </div>
@@ -271,9 +271,9 @@ function Unmatched({ txns, hasOpen, onFind }: { txns: BankTxn[]; hasOpen: (b: Ba
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="max-w-xl text-[15px] text-muted">Payments with no invoice or bill. Some are expected (salaries, taxes, interest); for the rest, find the invoice by hand.</p>
-        <div className="flex rounded-xl border border-line bg-sheet p-1" role="group" aria-label="Direction">
+        <div className="flex rounded-[3px] border border-line bg-sheet p-1" role="group" aria-label="Direction">
           {(["in", "out"] as const).map((f) => (
-            <button key={f} type="button" aria-pressed={flow === f} onClick={() => setFlow(f)} className={`min-h-11 rounded-lg px-4 text-[14px] ${flow === f ? "bg-ink text-paper" : "text-ink-2 hover:text-ink"}`}>
+            <button key={f} type="button" aria-pressed={flow === f} onClick={() => setFlow(f)} className={`min-h-11 rounded-[3px] px-4 text-[14px] ${flow === f ? "bg-ink text-paper" : "text-ink-2 hover:text-ink"}`}>
               {f === "in" ? "Money in" : "Money out"} ({txns.filter((b) => (f === "in" ? b.amount > 0 : b.amount < 0)).length})
             </button>
           ))}
@@ -290,7 +290,7 @@ function Unmatched({ txns, hasOpen, onFind }: { txns: BankTxn[]; hasOpen: (b: Ba
               </span>
               <span className={`num order-1 text-right font-semibold md:order-none ${b.amount > 0 ? "text-thread" : ""}`}>{b.amount > 0 ? "+" : "−"}{money(b.amount)}</span>
               <span className="order-3 col-span-2 md:order-none md:col-span-1">
-                <button type="button" disabled={!hasOpen(b)} onClick={() => onFind(b.id)} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-line px-3 text-[14px] font-medium hover:border-ink/40 disabled:opacity-35 md:w-auto">
+                <button type="button" disabled={!hasOpen(b)} onClick={() => onFind(b.id)} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-[3px] border border-line px-3 text-[14px] font-medium hover:border-ink/40 disabled:opacity-35 md:w-auto">
                   <Icon name="link" className="size-4" /> {b.amount > 0 ? "Find invoice" : "Find bill"}
                 </button>
               </span>
@@ -315,23 +315,23 @@ function Unpaid({ receivable, payable, asOf, onFind, say }: { receivable: Invoic
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-[15px] text-muted">Still open as of {day(asOf)} (the last day of the statement).</p>
-        <div className="flex rounded-xl border border-line bg-sheet p-1" role="group" aria-label="Side">
+        <div className="flex rounded-[3px] border border-line bg-sheet p-1" role="group" aria-label="Side">
           {(["receivable", "payable"] as const).map((f) => (
-            <button key={f} type="button" aria-pressed={side === f} onClick={() => setSide(f)} className={`min-h-11 rounded-lg px-4 text-[14px] ${side === f ? "bg-ink text-paper" : "text-ink-2 hover:text-ink"}`}>
+            <button key={f} type="button" aria-pressed={side === f} onClick={() => setSide(f)} className={`min-h-11 rounded-[3px] px-4 text-[14px] ${side === f ? "bg-ink text-paper" : "text-ink-2 hover:text-ink"}`}>
               {f === "receivable" ? `Owed to you (${receivable.length})` : `You owe (${payable.length})`}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-line bg-sheet p-5">
+      <div className="mt-6 rounded-[3px] border border-line bg-sheet p-5">
         <h3 className="font-semibold">Aging</h3>
         <ul className="mt-4 flex flex-col gap-1">
           {totals.map((t) => (
             <li key={t.k} className="grid min-h-10 grid-cols-[6.5rem_1fr_auto] items-center gap-3 sm:grid-cols-[8rem_1fr_auto]">
               <span className="text-[14px] text-ink-2">{t.k}</span>
               <span className="relative h-3" title={`${t.k}: ${inr(t.v)} across ${t.n}`}>
-                {t.v > 0 && <span className={`absolute inset-y-0 left-0 rounded-r-[4px] ${t.k === "Not yet due" ? "bg-series-1" : "bg-rose"}`} style={{ width: `${Math.max((t.v / max) * 100, 1.5)}%` }} />}
+                {t.v > 0 && <span className={`absolute inset-y-0 left-0 rounded-r-[1px] ${t.k === "Not yet due" ? "bg-series-1" : "bg-rose"}`} style={{ width: `${Math.max((t.v / max) * 100, 1.5)}%` }} />}
               </span>
               <span className="num w-24 text-right text-[14px] font-medium">{t.v ? inr(t.v) : "—"}</span>
             </li>
@@ -348,21 +348,21 @@ function Unpaid({ receivable, payable, asOf, onFind, say }: { receivable: Invoic
                 <div className="min-w-0 flex-1">
                   <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
                     <span className="truncate font-semibold">{i.party}</span>
-                    <span className={`label rounded-full px-2 py-0.5 ${d > 0 ? "bg-rose-soft text-rose" : "bg-info-soft text-info"}`}>{d > 0 ? `${d} days overdue` : d === 0 ? "Due today" : `Due in ${-d} days`}</span>
+                    <span className={`stamp ${d > 0 ? "text-rose" : "text-info"}`}>{d > 0 ? `${d} days overdue` : d === 0 ? "Due today" : `Due in ${-d} days`}</span>
                   </p>
                   <p className="mt-0.5 text-[14px] text-muted">{i.number} · raised {day(i.date)}{i.due ? ` · due ${day(i.due)}` : ""}</p>
                 </div>
                 <p className="num text-lg font-semibold md:w-32 md:text-right">{money(i.open)}</p>
                 <div className="flex flex-wrap gap-2">
-                  <button type="button" onClick={() => onFind(i.id)} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line px-3 text-[14px] font-medium hover:border-ink/40">
+                  <button type="button" onClick={() => onFind(i.id)} className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line px-3 text-[14px] font-medium hover:border-ink/40">
                     <Icon name="link" className="size-4" /> Find payment
                   </button>
                   {side === "receivable" && d > -7 && (
                     <>
-                      <button type="button" onClick={() => copy(i)} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line px-3 text-[14px] font-medium hover:border-ink/40">
+                      <button type="button" onClick={() => copy(i)} className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line px-3 text-[14px] font-medium hover:border-ink/40">
                         <Icon name="copy" className="size-4" /> Copy reminder
                       </button>
-                      <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line px-3 text-[14px] font-medium hover:border-ink/40">
+                      <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-[3px] border border-line px-3 text-[14px] font-medium hover:border-ink/40">
                         <Icon name="send" className="size-4" /> WhatsApp
                       </a>
                     </>

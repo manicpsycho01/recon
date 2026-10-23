@@ -47,7 +47,7 @@ export function Landing({ bankSlot, invSlot, onBank, onInvoices, onClear, onStar
         <div data-hero className="lg:col-span-6">
           <p className="label text-muted">Bank reconciliation · for Indian businesses</p>
           <h1 className="display mt-4 text-[clamp(2.6rem,7vw,4.6rem)] text-balance short:text-[clamp(2.4rem,5vw,3.6rem)]">
-            Match every payment to its <span className="text-thread">invoice</span>.
+            Match every payment to its <em className="text-thread">invoice</em>.
           </h1>
           <p className="mt-4 max-w-xl text-[17px] text-ink-2 sm:text-lg">
             <span className="sm:hidden">Drop your bank statement and invoice list. See what&apos;s paid, what isn&apos;t, and what needs a look.</span>
@@ -64,11 +64,11 @@ export function Landing({ bankSlot, invSlot, onBank, onInvoices, onClear, onStar
               type="button"
               onClick={onStart}
               disabled={!ready}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-ink px-6 font-semibold text-paper transition-[opacity,transform] hover:-translate-y-px disabled:pointer-events-none disabled:opacity-35"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] bg-ink px-6 font-semibold text-paper transition-[opacity,transform] hover:-translate-y-px disabled:pointer-events-none disabled:opacity-35"
             >
               <Icon name="link" className="size-5" /> Match them
             </button>
-            <button type="button" onClick={onSample} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line bg-sheet px-5 font-medium hover:border-ink/40">
+            <button type="button" onClick={onSample} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] border border-line bg-sheet px-5 font-medium hover:border-ink/40">
               Try with sample data
             </button>
           </div>
@@ -88,7 +88,7 @@ export function Landing({ bankSlot, invSlot, onBank, onInvoices, onClear, onStar
             <p className="label text-muted">What it handles</p>
             <h2 id="handles-title" className="display mt-3 text-[clamp(2rem,4.5vw,3.25rem)] text-balance">The awkward cases are the whole point.</h2>
           </div>
-          <ul data-rise className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <ul data-rise className="mt-10 grid gap-px overflow-hidden rounded-[3px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {HANDLES.map((h) => (
               <li key={h.title} className="bg-sheet p-6">
                 <Icon name={h.icon} className="size-6 text-thread" />
@@ -107,7 +107,7 @@ export function Landing({ bankSlot, invSlot, onBank, onInvoices, onClear, onStar
             <h2 id="decide-title" className="display mt-3 text-[clamp(2rem,4.5vw,3.25rem)] text-balance">Every match shows its working.</h2>
             <p className="mt-4 text-ink-2">Four signals, each one visible on the match. Only confident, unambiguous pairs are matched automatically — everything else waits for you.</p>
           </div>
-          <ol data-rise className="flex flex-col divide-y divide-line rounded-2xl border border-line bg-sheet md:col-span-7">
+          <ol data-rise className="flex flex-col divide-y divide-line rounded-[3px] border border-line bg-sheet md:col-span-7">
             {[
               ["Amount", "Exact, or short by a TDS rate (1/2/5/10%) or by bank charges.", "45"],
               ["Invoice number", "Quoted in the narration — in full, or just its digits.", "30"],
@@ -115,7 +115,7 @@ export function Landing({ bankSlot, invSlot, onBank, onInvoices, onClear, onStar
               ["Date", "Paid after it was raised, around when it was due.", "10"],
             ].map(([t, d, pts]) => (
               <li key={t} className="flex items-start gap-4 p-5">
-                <span className="num label w-12 shrink-0 rounded-md bg-thread-soft py-1 text-center text-thread">{pts}</span>
+                <span className="num display w-12 shrink-0 text-right text-3xl leading-none text-thread">{pts}</span>
                 <span><span className="font-semibold">{t}.</span> <span className="text-ink-2">{d}</span></span>
               </li>
             ))}

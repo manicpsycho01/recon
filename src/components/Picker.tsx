@@ -36,19 +36,19 @@ export function Picker({ title, target, items, onPick, onClose }: {
 
   return (
     <div role="dialog" aria-modal="true" aria-label={title} data-lenis-prevent className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 backdrop-blur-sm sm:items-center sm:p-6" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="flex max-h-[min(88dvh,760px)] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-line bg-sheet shadow-2xl sm:rounded-3xl">
+      <div className="flex max-h-[min(88dvh,760px)] w-full max-w-2xl flex-col overflow-hidden rounded-t-[4px] border border-line bg-sheet sm:rounded-[3px]">
         <div className="border-b border-line p-4 sm:p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <h2 className="text-lg font-semibold">{title}</h2>
               <p className="mt-0.5 truncate text-[14px] text-muted">{target.label} · <span className="num text-ink">{money(target.amount)}</span></p>
             </div>
-            <button type="button" onClick={onClose} aria-label="Close" className="-m-1 grid size-11 shrink-0 place-items-center rounded-xl hover:bg-paper"><Icon name="x" /></button>
+            <button type="button" onClick={onClose} aria-label="Close" className="-m-1 grid size-11 shrink-0 place-items-center rounded-[3px] hover:bg-paper"><Icon name="x" /></button>
           </div>
           <label className="relative mt-3 block">
             <span className="sr-only">Search</span>
             <Icon name="search" className="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted" />
-            <input ref={search} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by party, number or amount" className="min-h-12 w-full rounded-xl border border-line bg-paper pr-4 pl-10 outline-none focus:border-ink" />
+            <input ref={search} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by party, number or amount" className="min-h-12 w-full rounded-[3px] border border-line bg-paper pr-4 pl-10 outline-none focus:border-ink" />
           </label>
         </div>
 
@@ -57,7 +57,7 @@ export function Picker({ title, target, items, onPick, onClose }: {
             const on = sel.includes(i.id);
             return (
               <li key={i.id}>
-                <label className={`flex min-h-14 cursor-pointer items-center gap-3 px-4 py-3 sm:px-5 ${on ? "bg-thread-soft" : "hover:bg-paper"}`}>
+                <label className={`flex min-h-14 cursor-pointer items-center gap-3 px-4 py-3 sm:px-5 ${on ? "bg-thread-soft shadow-[inset_3px_0_0_var(--color-thread)]" : "hover:bg-paper"}`}>
                   <input type="checkbox" checked={on} onChange={() => setSel((s) => (on ? s.filter((x) => x !== i.id) : [...s, i.id]))} className="size-5 shrink-0 accent-[var(--color-thread)]" />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-medium">{i.title}</span>
@@ -78,7 +78,7 @@ export function Picker({ title, target, items, onPick, onClose }: {
           <p className="text-[14px] text-muted" aria-live="polite">
             {sel.length ? <>Selected <span className="num text-ink">{money(total)}</span> of <span className="num text-ink">{money(target.amount)}</span></> : "Select one or more."}
           </p>
-          <button type="button" disabled={!sel.length} onClick={() => onPick(sel)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-ink px-5 font-semibold text-paper disabled:opacity-35">
+          <button type="button" disabled={!sel.length} onClick={() => onPick(sel)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] bg-ink px-5 font-semibold text-paper disabled:opacity-35">
             <Icon name="link" className="size-4" /> Match {sel.length > 1 ? `${sel.length} items` : ""}
           </button>
         </div>

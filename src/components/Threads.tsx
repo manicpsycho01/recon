@@ -35,7 +35,7 @@ export function Threads() {
   }, { scope: root });
 
   return (
-    <div ref={root} aria-hidden className="ledger relative overflow-hidden rounded-3xl border border-line bg-sheet p-4 sm:p-6">
+    <div ref={root} aria-hidden className="ledger relative overflow-hidden rounded-[3px] border border-line bg-sheet py-4 pr-4 pl-10 sm:py-6 sm:pr-6 sm:pl-12">
       <div className="label mb-4 flex justify-between text-muted">
         <span>Bank statement</span>
         <span>Invoices</span>
@@ -43,7 +43,7 @@ export function Threads() {
       <div className="relative grid grid-cols-[1fr_6.75rem_1fr] items-center gap-y-3 xl:grid-cols-[1fr_7.5rem_1fr]">
         {PAY.map((p, i) => (
           <div key={i} className="contents">
-            <div data-row className="min-w-0 rounded-xl border border-line bg-paper px-3 py-2.5">
+            <div data-row className="min-w-0 rounded-[2px] border border-line bg-sheet px-3 py-2.5">
               <p className="label truncate text-[10.5px] text-muted">{p[0]} · NEFT</p>
               <p className="truncate text-[13px] font-medium">{p[1]}</p>
               <p className="num text-[13px] text-ink-2">₹{p[2]}</p>
@@ -52,11 +52,11 @@ export function Threads() {
               <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="absolute inset-0 size-full overflow-visible">
                 <path data-thread d="M0 20 C 45 20, 55 20, 100 20" fill="none" strokeWidth="1.6" vectorEffect="non-scaling-stroke" className={TAGS[i]![1] === "review" ? "stroke-review" : "stroke-thread"} />
               </svg>
-              <span data-tag={i} className={`label absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full px-2 py-0.5 text-[11px] tracking-[0.02em] whitespace-nowrap ${
-                TAGS[i]![1] === "thread" ? "bg-thread-soft text-thread" : TAGS[i]![1] === "review" ? "bg-review-soft text-review" : "bg-info-soft text-info"
+              <span data-tag={i} className={`label absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 stamp bg-sheet whitespace-nowrap ${
+                TAGS[i]![1] === "thread" ? "text-thread" : TAGS[i]![1] === "review" ? "text-review" : "text-info"
               }`}>{TAGS[i]![0]}</span>
             </div>
-            <div data-row className="min-w-0 rounded-xl border border-line bg-paper px-3 py-2.5">
+            <div data-row className="min-w-0 rounded-[2px] border border-line bg-sheet px-3 py-2.5">
               <p className="label truncate text-[10.5px] text-muted">{INV[i]![0]}</p>
               <p className="truncate text-[13px] font-medium">{INV[i]![1]}</p>
               <p className="num text-[13px] text-ink-2">₹{INV[i]![2]}</p>

@@ -4,7 +4,7 @@ export const REPO = "https://github.com/manicpsycho01/recon";
 
 export function Logo() {
   return (
-    <span className="display inline-flex items-center gap-2 text-[1.45rem] leading-none">
+    <span className="display inline-flex items-center gap-2 text-[1.6rem] leading-none italic">
       <svg viewBox="0 0 28 20" className="h-4.5 w-6.5" aria-hidden>
         <rect x="1" y="2" width="8" height="4" rx="2" className="fill-ink" />
         <rect x="1" y="14" width="8" height="4" rx="2" className="fill-ink" />
@@ -29,7 +29,7 @@ export function SiteHeader({ onHome }: { onHome?: () => void }) {
             <Logo />
           </a>
         )}
-        <p className="label inline-flex min-h-9 items-center gap-2 rounded-full border border-line px-3 text-muted">
+        <p className="label inline-flex min-h-9 items-center gap-2 rounded-[3px] border border-line px-3 text-muted">
           <Icon name="lock" className="size-3.5 shrink-0" />
           <span className="sm:hidden">Never uploaded</span>
           <span className="hidden sm:inline">Your files never leave this device</span>

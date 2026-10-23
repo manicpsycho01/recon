@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, IBM_Plex_Mono, Inter } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-const brico = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-brico" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const news = Newsreader({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-news" });
+const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plexsans" });
 const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-plex" });
 
 const url = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3300";
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f6f7f4" }, { media: "(prefers-color-scheme: dark)", color: "#0e1318" }],
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#efebe0" }, { media: "(prefers-color-scheme: dark)", color: "#15140f" }],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${brico.variable} ${inter.variable} ${plex.variable}`}>
+    <html lang="en-IN" className={`${news.variable} ${plexSans.variable} ${plex.variable}`}>
       <body>
-        <a href="#main" className="label fixed top-3 left-3 z-50 -translate-y-24 rounded-full bg-ink px-4 py-3 text-paper focus-visible:translate-y-0">
+        <a href="#main" className="label fixed top-3 left-3 z-50 -translate-y-24 rounded-[3px] bg-ink px-4 py-3 text-paper focus-visible:translate-y-0">
           Skip to content
         </a>
         <SmoothScroll />
