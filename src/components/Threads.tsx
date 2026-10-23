@@ -35,7 +35,7 @@ export function Threads() {
   }, { scope: root });
 
   return (
-    <div ref={root} aria-hidden className="ledger relative overflow-hidden rounded-[3px] border border-line bg-sheet py-4 pr-4 pl-10 sm:py-6 sm:pr-6 sm:pl-12">
+    <div ref={root} aria-hidden className="ledger relative overflow-hidden rounded-[3px] border border-line bg-sheet py-4 pr-10 pl-10 sm:py-6 sm:pr-12 sm:pl-12">
       <div className="label mb-4 flex justify-between text-muted">
         <span>Bank statement</span>
         <span>Invoices</span>

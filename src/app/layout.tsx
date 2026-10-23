@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-const news = Newsreader({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-news" });
+const plexCond = IBM_Plex_Sans_Condensed({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-plexcond" });
 const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-plexsans" });
 const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-plex" });
 
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#efebe0" }, { media: "(prefers-color-scheme: dark)", color: "#15140f" }],
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f1f4ee" }, { media: "(prefers-color-scheme: dark)", color: "#0a110d" }],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${news.variable} ${plexSans.variable} ${plex.variable}`}>
+    <html lang="en-IN" className={`${plexCond.variable} ${plexSans.variable} ${plex.variable}`}>
       <body>
         <a href="#main" className="label fixed top-3 left-3 z-50 -translate-y-24 rounded-[3px] bg-ink px-4 py-3 text-paper focus-visible:translate-y-0">
           Skip to content

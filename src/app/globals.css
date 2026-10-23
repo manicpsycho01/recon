@@ -1,29 +1,30 @@
 @import "tailwindcss";
 
-/* An accountant's ledger book: manila paper, green column rules, a red margin line,
-   carbon-copy blue for what's matched, red pencil for what's owed, ochre for "check this". */
+/* Green-bar computer printout — the paper reconciliations used to run on: cool white with pale green
+   bands and tractor-feed holes, IBM Plex throughout, printer green for "matched", amber for "check this",
+   red for "owed". Dark mode is a green-phosphor terminal. */
 @theme {
-  --color-paper: #efebe0;
-  --color-sheet: #f8f6ef;
-  --color-ink: #17160f;
-  --color-ink-2: #3b3930;
-  --color-muted: #6b675b;
-  --color-line: rgb(23 22 15 / 0.18);
-  --color-line-2: rgb(23 22 15 / 0.08);
-  --color-rule: rgb(46 98 82 / 0.13);
-  --color-margin: rgb(179 38 30 / 0.45);
-  --color-thread: #1f3fa8;
-  --color-thread-soft: #e4e6ef;
-  --color-review: #8d5a00;
-  --color-review-soft: #f2e6c8;
-  --color-rose: #b3261e;
-  --color-rose-soft: #f3dcd6;
-  --color-info: #3d5a73;
-  --color-info-soft: #e3e7e6;
+  --color-paper: #f1f4ee;
+  --color-sheet: #fbfcf9;
+  --color-ink: #0f1a14;
+  --color-ink-2: #33423a;
+  --color-muted: #5d6b63;
+  --color-line: rgb(15 26 20 / 0.17);
+  --color-line-2: rgb(15 26 20 / 0.07);
+  --color-band: #e1eedd;
+  --color-hole: rgb(15 26 20 / 0.13);
+  --color-thread: #12703e;
+  --color-thread-soft: #dcefe1;
+  --color-review: #965800;
+  --color-review-soft: #f6ead0;
+  --color-rose: #b42318;
+  --color-rose-soft: #f8e0dc;
+  --color-info: #2b5a6b;
+  --color-info-soft: #e0ecee;
   --color-series-1: #2a78d6;
   --color-series-2: #eb6834;
 
-  --font-display: var(--font-news), Georgia, serif;
+  --font-display: var(--font-plexcond), "Arial Narrow", sans-serif;
   --font-sans: var(--font-plexsans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
 
@@ -32,45 +33,45 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-paper: #15140f;
-    --color-sheet: #1d1c16;
-    --color-ink: #ece8dc;
-    --color-ink-2: #cfcabb;
-    --color-muted: #9c978a;
-    --color-line: rgb(236 232 220 / 0.17);
-    --color-line-2: rgb(236 232 220 / 0.07);
-    --color-rule: rgb(120 180 160 / 0.09);
-    --color-margin: rgb(230 110 100 / 0.4);
-    --color-thread: #93a6f2;
-    --color-thread-soft: #1d2236;
-    --color-review: #e2b04f;
-    --color-review-soft: #2e2512;
-    --color-rose: #ef8a7f;
-    --color-rose-soft: #35191a;
-    --color-info: #a6bccd;
-    --color-info-soft: #1f2629;
+    --color-paper: #0a110d;
+    --color-sheet: #101a14;
+    --color-ink: #d6f2dd;
+    --color-ink-2: #b2d4bb;
+    --color-muted: #7f9d89;
+    --color-line: rgb(214 242 221 / 0.15);
+    --color-line-2: rgb(214 242 221 / 0.07);
+    --color-band: rgb(90 210 130 / 0.07);
+    --color-hole: rgb(214 242 221 / 0.1);
+    --color-thread: #5fe093;
+    --color-thread-soft: #11301d;
+    --color-review: #f0b44a;
+    --color-review-soft: #2e2410;
+    --color-rose: #ff8b7b;
+    --color-rose-soft: #3a1714;
+    --color-info: #8cc3d4;
+    --color-info-soft: #13262c;
     --color-series-1: #3987e5;
     --color-series-2: #d95926;
   }
 }
 :root[data-theme="dark"] {
-  --color-paper: #15140f;
-  --color-sheet: #1d1c16;
-  --color-ink: #ece8dc;
-  --color-ink-2: #cfcabb;
-  --color-muted: #9c978a;
-  --color-line: rgb(236 232 220 / 0.17);
-  --color-line-2: rgb(236 232 220 / 0.07);
-  --color-rule: rgb(120 180 160 / 0.09);
-  --color-margin: rgb(230 110 100 / 0.4);
-  --color-thread: #93a6f2;
-  --color-thread-soft: #1d2236;
-  --color-review: #e2b04f;
-  --color-review-soft: #2e2512;
-  --color-rose: #ef8a7f;
-  --color-rose-soft: #35191a;
-  --color-info: #a6bccd;
-  --color-info-soft: #1f2629;
+  --color-paper: #0a110d;
+  --color-sheet: #101a14;
+  --color-ink: #d6f2dd;
+  --color-ink-2: #b2d4bb;
+  --color-muted: #7f9d89;
+  --color-line: rgb(214 242 221 / 0.15);
+  --color-line-2: rgb(214 242 221 / 0.07);
+  --color-band: rgb(90 210 130 / 0.07);
+  --color-hole: rgb(214 242 221 / 0.1);
+  --color-thread: #5fe093;
+  --color-thread-soft: #11301d;
+  --color-review: #f0b44a;
+  --color-review-soft: #2e2410;
+  --color-rose: #ff8b7b;
+  --color-rose-soft: #3a1714;
+  --color-info: #8cc3d4;
+  --color-info-soft: #13262c;
   --color-series-1: #3987e5;
   --color-series-2: #d95926;
 }
@@ -101,10 +102,15 @@
 }
 @utility display {
   font-family: var(--font-display);
-  font-weight: 450;
-  letter-spacing: -0.022em;
-  line-height: 1.02;
-  font-optical-sizing: auto;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.012em;
+  line-height: 0.94;
+  & em {
+    font-style: normal;
+    color: var(--color-thread);
+    background: linear-gradient(transparent 62%, var(--color-band) 62%);
+  }
 }
 @utility num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
 @utility wrap {
@@ -114,12 +120,14 @@
   padding-inline: max(1rem, env(safe-area-inset-left));
   @media (min-width: 768px) { padding-inline: 2rem; }
 }
-/* Faint ledger rules behind hero and empty states. */
+/* Green-bar printout: tractor-feed holes down both edges over alternating green and white bands. */
 @utility ledger {
   background-image:
-    linear-gradient(90deg, transparent 22px, var(--color-margin) 22px, var(--color-margin) 23px, transparent 23px, transparent 26px, var(--color-margin) 26px, var(--color-margin) 27px, transparent 27px),
-    linear-gradient(var(--color-rule) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 30px;
+    radial-gradient(circle at 12px 18px, var(--color-hole) 4px, transparent 4.6px),
+    radial-gradient(circle at calc(100% - 12px) 18px, var(--color-hole) 4px, transparent 4.6px),
+    repeating-linear-gradient(var(--color-band) 0 36px, transparent 36px 72px);
+  background-size: 100% 36px, 100% 36px, 100% 100%;
+  background-repeat: repeat-y, repeat-y, no-repeat;
 }
 /* An outlined, stamp-like status tag. */
 @utility stamp {

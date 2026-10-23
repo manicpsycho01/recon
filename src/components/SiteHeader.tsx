@@ -4,7 +4,7 @@ export const REPO = "https://github.com/manicpsycho01/recon";
 
 export function Logo() {
   return (
-    <span className="display inline-flex items-center gap-2 text-[1.6rem] leading-none italic">
+    <span className="display inline-flex items-center gap-2 text-[1.7rem] leading-none tracking-[0.02em]">
       <svg viewBox="0 0 28 20" className="h-4.5 w-6.5" aria-hidden>
         <rect x="1" y="2" width="8" height="4" rx="2" className="fill-ink" />
         <rect x="1" y="14" width="8" height="4" rx="2" className="fill-ink" />
