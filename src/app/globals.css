@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Ledger paper, ink, and three states: matched (thread green), review (amber), unpaid/unmatched (rose). */
+@theme {
+  --color-paper: #f6f7f4;
+  --color-sheet: #ffffff;
+  --color-ink: #0f1720;
+  --color-ink-2: #36414d;
+  --color-muted: #66717d;
+  --color-line: rgb(15 23 32 / 0.12);
+  --color-line-2: rgb(15 23 32 / 0.06);
+  --color-rule: rgb(42 120 214 / 0.07);
+  --color-thread: #0b7a5f;
+  --color-thread-soft: #dcf2ea;
+  --color-review: #a85a06;
+  --color-review-soft: #fbeedb;
+  --color-rose: #be2f4a;
+  --color-rose-soft: #fbe3e8;
+  --color-info: #2a68c4;
+  --color-info-soft: #e1ecfb;
+  --color-series-1: #2a78d6;
+  --color-series-2: #eb6834;
+
+  --font-display: var(--font-brico), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-paper: #0e1318;
+    --color-sheet: #151b22;
+    --color-ink: #eef2f5;
+    --color-ink-2: #c9d1d9;
+    --color-muted: #94a0ab;
+    --color-line: rgb(238 242 245 / 0.13);
+    --color-line-2: rgb(238 242 245 / 0.06);
+    --color-rule: rgb(57 135 229 / 0.08);
+    --color-thread: #3fc495;
+    --color-thread-soft: #0f2c23;
+    --color-review: #f0a54a;
+    --color-review-soft: #33240f;
+    --color-rose: #f17a92;
+    --color-rose-soft: #3a1720;
+    --color-info: #6ea6f0;
+    --color-info-soft: #14243a;
+    --color-series-1: #3987e5;
+    --color-series-2: #d95926;
+  }
+}
+:root[data-theme="dark"] {
+  --color-paper: #0e1318;
+  --color-sheet: #151b22;
+  --color-ink: #eef2f5;
+  --color-ink-2: #c9d1d9;
+  --color-muted: #94a0ab;
+  --color-line: rgb(238 242 245 / 0.13);
+  --color-line-2: rgb(238 242 245 / 0.06);
+  --color-rule: rgb(57 135 229 / 0.08);
+  --color-thread: #3fc495;
+  --color-thread-soft: #0f2c23;
+  --color-review: #f0a54a;
+  --color-review-soft: #33240f;
+  --color-rose: #f17a92;
+  --color-rose-soft: #3a1720;
+  --color-info: #6ea6f0;
+  --color-info-soft: #14243a;
+  --color-series-1: #3987e5;
+  --color-series-2: #d95926;
+}
+
+@custom-variant short (@media (min-width: 640px) and (max-height: 760px));
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--color-thread-soft); color: var(--color-ink); }
+  :focus-visible { outline: 2px solid var(--color-info); outline-offset: 3px; border-radius: 8px; }
+  button { cursor: pointer; }
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+@utility num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+@utility wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1180px;
+  padding-inline: max(1rem, env(safe-area-inset-left));
+  @media (min-width: 768px) { padding-inline: 2rem; }
+}
+/* Faint ledger rules behind hero and empty states. */
+@utility ledger {
+  background-image: linear-gradient(var(--color-rule) 1px, transparent 1px);
+  background-size: 100% 32px;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
